@@ -1,29 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background-primary: #ffffff;
+  --background-secondary: #F1C40E;
+  --color-primary: #000000;
+  --color-secondary: #F1C40E;
   --foreground: #171717;
-  --text-primary: #F1C40E;
+  /* --text-primary: #F1C40E; */
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--background-primary);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
+    --background-primary: #171717;
+    --background-secondary: #F1C40E;
     --foreground: #ededed;
-    /* --text-primary: #F1C40E; */
-
+   
   }
-}
+} */
 
 body {
-  background: var(--background);
+  background: var(--background-primary);
   color: var(--text-primary);
   font-family: var(--font-poppins);
+}
+
+.wrapper {
+  margin-inline: 2rem;
+}
+
+.heroText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 500;
+
+  line-height: 1.35;
+}
+
+
+
+.fade {
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
