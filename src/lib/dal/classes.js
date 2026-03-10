@@ -7,21 +7,40 @@ export async function getAllClasses() {
             throw new Error("Something went wrong");
         }
 
-        if (res.status !== 200) {
-            throw new Error(res.statusText);
-        }
-
         const contentType = res.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
-            return await res.json();
+            const data = await res.json();
+            console.log("getAllClasses data:", data);
+            return data;
         }
 
         throw new Error("Not JSON");
     } catch (error) {
         console.log("getAllClasses error:", error);
-        return {
-            success: false,
-            message: "something went wrong on the server, try again later",
-        }
+        return [];
     }
 }
+
+export async function getSingleClassById(id) {
+    try {
+        const res = await fetch(`http://localhost:4000/api/v1/classes/${id}`, {
+            cache: "no-store",
+        });
+
+        if (!res.ok) {
+            throw new Error(`Failed to fetch class ${id} (${res.status})`);
+        }
+
+        const contentType = res.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            throw new Error("Not JSON");
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.log("getClassById error:", error);
+        return null;
+    }
+}
+
+

@@ -22,11 +22,12 @@ export default async function Page() {
 
         <main className="mt-4">
             <ClassRandom classes={classesWithRatings} />
-            <h3 className="my-4 wrapper">Classes for you</h3>
+            <h3 className="mt-10 mb-2 wrapper">Classes for you</h3>
             <div className="flex overflow-x-auto gap-4 px-4">
                 {classesWithRatings.map((classItem) => (
                     <div key={classItem.id} className="relative min-w-fit">
                         <ClassCard
+                            classId={classItem.id}
                             imageUrl={classItem.asset.url}
                             altText={classItem.className}
                         />

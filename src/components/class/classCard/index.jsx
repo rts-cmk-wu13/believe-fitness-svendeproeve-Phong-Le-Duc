@@ -1,16 +1,22 @@
-import Image from 'next/image';
+import Image from "next/image";
+import Link from "next/link";
 
-export default function ClassCard({ imageUrl, altText }) {
+export default function ClassCard({ classId, imageUrl, altText }) {
     return (
         <div className="shrink-0 w-60">
-            <Image
-                src={imageUrl}
-                alt={altText}
-                unoptimized
-                width={500}
-                height={400}
-                className="w-full h-48 object-cover rounded-4xl rounded-br-none"
-            />
+            <Link
+                href={`/popular-classes/${classId}`}
+                aria-label={altText}
+            >
+                <Image
+                    src={imageUrl}
+                    alt={altText}
+                    unoptimized
+                    width={500}
+                    height={400}
+                    className="w-full h-48 object-cover rounded-4xl rounded-br-none"
+                />
+            </Link>
         </div>
     );
 }
