@@ -1,4 +1,5 @@
 
+import FooterLanding from "@/components/footer/FooterLanding";
 import FormContact from "@/components/formContactUs/FormContact";
 import Hero from "@/components/hero";
 import News from "@/components/news";
@@ -27,7 +28,7 @@ export default async function Home() {
         <TestimonialCarousel testimonials={testimonials} />
         <FormContact />
         <div className="border-t-2 border-black my-4 w-12 mx-auto"></div>
-
+        <FooterLanding />
       </main>
     </>
   );

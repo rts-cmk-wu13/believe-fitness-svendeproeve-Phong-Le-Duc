@@ -16,7 +16,7 @@ export default async function News() {
 
     return (
         <div className="">
-            <h1 className="wrapper my-8">News</h1>
+            <h1 className="wrapper my-8" style={{ color: "var(--color-secondary)" }}>News</h1>
             {news.map((item) => (
                 <article key={item.id} className="flex flex-col gap-4 rounded-sm overflow-hidden text-black wrapper mb-12">
                     <h2>{item.title}</h2>

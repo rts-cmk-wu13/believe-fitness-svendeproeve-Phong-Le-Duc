@@ -25,9 +25,9 @@ export default function Hero() {
                 {/* Dark overlay */}
             </div>
 
-            <div className="absolute inset-x-0 bottom-10 left-8 z-10 flex flex-col">
-                <p className="heroText text-(--text-primary)">Welcome to <br /> Believe Fitness</p>
-                <div className="flex gap-2">
+            <div className="absolute inset-x-0 bottom-12 left-8 z-10 flex flex-col gap-2">
+                <p className="heroText" style={{ color: "var(--color-secondary)" }}>Welcome to <br /> Believe Fitness</p>
+                <div className="flex gap-2 mt-4">
                     <ClassesBtn />
                     <LoginBtn />
                 </div>

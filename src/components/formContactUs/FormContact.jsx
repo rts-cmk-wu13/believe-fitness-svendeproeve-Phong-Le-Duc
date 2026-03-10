@@ -42,8 +42,8 @@ export default function FormContact({ }) {
 
     return (
         <section className="my-8 wrapper">
-            <h3>Kontakt os</h3>
-
+            <h2 className="mt-4">Contact us</h2>
+            <p className="my-4">Ask us anything about Believe Fitness!</p>
             <form method="post" onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-md rounded-sm">
                 <div className="flex flex-col w-full ">
                     <label htmlFor="name" className="mb-1 text-sm sr-only">Navn</label>
@@ -85,7 +85,10 @@ export default function FormContact({ }) {
                     </div>
                 )}
 
-                <button type="submit" className="bg-blue-300 p-2 w-full mx-auto rounded-full" style={{ boxShadow: "0 8px 24px 0 rgba(0,0,0,0.5)" }}>
+                <button type="submit" className=" p-2 w-full mx-auto rounded-full" style={{
+                    backgroundColor: "var(--background-secondary)"
+
+                }}>
                     Send besked
                 </button>
             </form>

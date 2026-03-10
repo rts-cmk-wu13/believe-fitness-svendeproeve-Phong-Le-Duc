@@ -2,7 +2,7 @@ export default function page() {
 
     return (
         <>
-            <h1>SEARCH PAGE HERE!</h1>
+            <h1>PROFILE PAGE HERE!</h1>
         </>
     )
 }

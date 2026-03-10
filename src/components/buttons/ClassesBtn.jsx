@@ -5,7 +5,7 @@ export default function ClassesBtn() {
 
     return (
         <>
-            <Link href="/login">
+            <Link href="/popular-classes">
                 <button
                     className="py-2 px-4 text-black rounded-full"
                     style={{
