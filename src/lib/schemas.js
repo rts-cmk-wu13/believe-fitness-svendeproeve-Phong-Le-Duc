@@ -25,15 +25,16 @@ export const contactSchema = z.object({
 
 export const registerSchema = z.object({
     firstname: z.string().min(2, "Fornavn skal være mindst 2 tegn langt"),
-    lastname: z.string().min(2, "Efternavn skal være mindst 2 tegn langt"),
-    username: z.string().min(2, "Navn skal være mindst 2 tegn langt"),
-    age: z.coerce.number().min(1, "Alder er påkrævet"),
+    email: z.string().email("Ugyldig email adresse"),
     password: z.string().min(4, "Adgangskode skal være mindst 4 tegn langt"),
-    confirmPassword: z.string().min(4, "Bekræft adgangskode skal være mindst 4 tegn langt"),
-}).refine((data) => data.password === data.confirmPassword, {
-    path: ["custom"],
-    message: "Adgangskoderne matcher ikke",
-});
+    confirmPassword: z.string(),
+}).refine(
+    (data) => data.confirmPassword.length >= 4 && data.password === data.confirmPassword,
+    {
+        path: ["confirmPassword"],
+        message: "Password does not match...",
+    }
+);
 
 
 export const createActivitySchema = z.object({

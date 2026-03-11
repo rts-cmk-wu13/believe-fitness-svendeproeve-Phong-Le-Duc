@@ -8,12 +8,19 @@ import styles from './BurgerNav.module.css';
 export default function BurgerNav() {
     const pathname = usePathname();
     const isWhiteText = pathname === '/' || pathname.startsWith('/popular-classes/');
+
     const [isOpen, setIsOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [hasMounted, setHasMounted] = useState(false);
 
     useEffect(() => {
         setIsLoggedIn(document.cookie.includes("token="));
+        setHasMounted(true);
     }, []);
+
+    if (!hasMounted) {
+        return null;
+    }
 
     return (
         <>

@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 export default function LoginBtn() {
     const router = useRouter();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [hasMounted, setHasMounted] = useState(false);
 
     useEffect(() => {
         setIsLoggedIn(document.cookie.includes("token="));
+        setHasMounted(true);
     }, []);
 
     const handleLogout = () => {
@@ -20,8 +22,7 @@ export default function LoginBtn() {
         router.refresh();
     };
 
-    if (typeof window === "undefined") {
-        // Avoid rendering anything on the server to prevent hydration mismatch
+    if (!hasMounted) {
         return null;
     }
 

@@ -23,16 +23,23 @@ export default function LoginForm() {
     }, [state.success, router]);
 
     return (
-        <section className="my-8 wrapper">
-            <h3>Log ind</h3>
-            <form action={formAction} noValidate className="flex flex-col gap-2 max-w-md rounded-sm">
+        <section className="my-8">
+
+            <h1 className=" wrapper" style={{ color: "var(--color-secondary)" }}>Believe <br /> Fitness</h1>
+            <div className="flex items-center gap-2 mt-4 mb-16"    >
+                <hr style={{ border: "1px solid #000000", width: "10%" }} />
+                <h3 className="">Train like a pro</h3>
+            </div>
+
+            <h3 className="wrapper mb-2">Log in with your credentials</h3>
+            <form action={formAction} noValidate className=" wrapper flex flex-col gap-2 max-w-md rounded-sm">
                 <div className="flex flex-col w-full">
                     <label htmlFor="username" className="mb-1 text-sm sr-only">Username:</label>
                     <input type="text"
                         name="username"
                         placeholder="Brugernavn"
                         defaultValue={state.values?.username}
-                        className="bg-white border border-gray-300 text-black rounded-sm px-3 py-2 focus:outline-none focus:border-blue-400" />
+                        className="bg-white border border-gray-300 text-black rounded-full px-3 py-2 focus:outline-none focus:border-blue-400" />
                     {state.errors?.username && <p style={{ color: "red" }}>{state.errors.username}</p>}
                 </div>
                 <div className="flex flex-col w-full">
@@ -41,12 +48,18 @@ export default function LoginForm() {
                         name="password"
                         placeholder="Password"
                         defaultValue={state.values?.password}
-                        className="bg-white border border-gray-300 text-black rounded-sm px-3 py-2 focus:outline-none focus:border-blue-400" />
+                        className="bg-white border border-gray-300 text-black rounded-full px-3 py-2 focus:outline-none focus:border-blue-400" />
                     {state.errors?.password && <p style={{ color: "red" }}>{state.errors.password}</p>}
                 </div>
                 {state.errors?.form && <p style={{ color: "red" }}>{state.errors.form}</p>}
-                <button type="submit" disabled={isPending} className="bg-blue-300 p-2 w-1/2 mx-auto rounded-md disabled:bg-gray-400">{isPending ? "Logging in..." : "Log ind"}</button>
+                <button type="submit" disabled={isPending} className="bg-blue-300 p-2 w-full mx-auto rounded-full disabled:bg-gray-400" style={{ backgroundColor: "var(--color-secondary)" }}>{isPending ? "Logging in..." : "Log ind"}</button>
             </form>
-        </section>
+            <div className="wrapper text-center mt-4 text-sm text-gray-400">
+                <p>Are You not yet a Believer?</p>
+                <p>
+                    <a href="/sign-up" className="underline text-yellow-500 hover:text-blue-700">Sign up here</a> to start training like a pro.
+                </p>
+            </div>
+        </section >
     );
 }
