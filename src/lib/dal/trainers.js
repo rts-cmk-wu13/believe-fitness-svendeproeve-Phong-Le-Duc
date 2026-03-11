@@ -18,6 +18,11 @@ export async function getAllTrainers() {
 }
 
 export async function getTrainerById(id) {
-    const trainers = await getAllTrainers();
-    return trainers.find((trainer) => trainer.id === Number(id)) || null;
+    const res = await fetch(`http://localhost:4000/api/v1/trainers/${id}`);
+    if (!res.ok) throw new Error("Something went wrong");
+    const contentType = res.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+        return await res.json();
+    }
+    throw new Error("Not JSON");
 }

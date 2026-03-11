@@ -8,7 +8,8 @@ import ClassesBtn from "../buttons/ClassesBtn";
 
 
 export default function Hero() {
-
+    // Check for token in cookies (client-side)
+    const isLoggedIn = typeof document !== "undefined" && document.cookie.includes("token=");
 
     return (
         <div className="relative w-full h-[40vh]">
@@ -29,8 +30,8 @@ export default function Hero() {
                 <p className="heroText" style={{ color: "var(--color-secondary)" }}>Welcome to <br /> Believe Fitness</p>
                 <div className="flex gap-2 mt-4">
                     <ClassesBtn />
-                    <LoginBtn />
-                </div>AC
+                    <LoginBtn isLoggedIn={isLoggedIn} />
+                </div>
             </div>
         </div>
     );

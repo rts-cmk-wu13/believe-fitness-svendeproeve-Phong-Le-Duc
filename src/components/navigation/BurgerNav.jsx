@@ -1,13 +1,19 @@
 'use client';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Link from "next/link";
 import styles from './BurgerNav.module.css';
 
 export default function BurgerNav() {
     const pathname = usePathname();
     const isWhiteText = pathname === '/' || pathname.startsWith('/popular-classes/');
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        setIsLoggedIn(document.cookie.includes("token="));
+    }, []);
 
     return (
         <>
@@ -40,11 +46,29 @@ export default function BurgerNav() {
                         />
                     </button>
                     <nav className={styles.nav}>
-                        <a href="/" className={styles.navLink}>Home</a>
-                        <a href="/popular-classes" className={styles.navLink}>Popular Classes</a>
-                        <a href="/search" className={styles.navLink}>Search</a>
-                        <a href="/profile" className={styles.navLink}>My Profile</a>
-                        <button className={styles.logoutButton}>Log Out</button>
+                        <Link href="/" className={styles.navLink} onClick={() => setIsOpen(false)}>Home</Link>
+                        <Link href="/popular-classes" className={styles.navLink} onClick={() => setIsOpen(false)}>Popular Classes</Link>
+                        <Link href="/search" className={styles.navLink} onClick={() => setIsOpen(false)}>Search</Link>
+                        <Link href="/profile" className={styles.navLink} onClick={() => setIsOpen(false)}>My Profile</Link>
+                        {isLoggedIn ? (
+                            <button
+                                className={styles.navLink}
+                                onClick={() => {
+                                    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                    document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                    setIsOpen(false);
+                                    window.location.replace("/"); // Hard reload to update UI
+                                }}
+                            >
+                                Log out
+                            </button>
+                        ) : (
+                            <Link href="/login" className={styles.navLink} onClick={() => setIsOpen(false)}>
+                                Log In
+                            </Link>
+                        )}
                     </nav>
                 </div>
             )}
