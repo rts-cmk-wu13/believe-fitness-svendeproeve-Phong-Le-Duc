@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { getSingleUser } from "@/lib/dal/user";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Page() {
     const cookieStore = await cookies();
@@ -33,25 +34,30 @@ export default async function Page() {
             {user.classes.length === 0 ? (
                 <p>Not signed up to any classes yet.</p>
             ) : (
-                <ul className="flex flex-col gap-2 border border-solid rounded-3xl p-4" >
+                <ul className="flex flex-col gap-2 " >
                     {user.classes.map((classItem) => (
-                        <li key={classItem.id}>
+                        <li key={classItem.id} className="mb-4  p-4 border border-solid rounded-3xl">
                             <p className="text-2xl font-semibold">{classItem.className}</p>
                             <p className="mt-4">{classItem.classDay} at {classItem.classTime}</p>
+                            <div className="flex justify-between mt-4">
+                                {/* Show Class button as a Link */}
+                                <Link
+                                    href={`/popular-classes/${classItem.id}`}
+                                    className="py-2 px-4 text-black rounded-full"
+                                    style={{ backgroundColor: "var(--background-secondary)" }}
+                                >
+                                    Show Class
+                                </Link>
+                                {/* Leave button (still a button for future logic) */}
+                                <button
+                                    className="py-2 px-4 text-black rounded-full"
+                                    style={{ backgroundColor: "var(--background-secondary)" }}
+                                >
+                                    Leave
+                                </button>
+                            </div>
                         </li>
                     ))}
-                    <div className="flex justify-between">
-                        <button className="py-2 px-4 text-black rounded-full"
-                            style={{
-                                backgroundColor: "var(--background-secondary)"
-
-                            }}>Show Class</button>
-                        <button className="py-2 px-4 text-black rounded-full"
-                            style={{
-                                backgroundColor: "var(--background-secondary)"
-
-                            }}>Leave</button>
-                    </div>
                 </ul>
             )}
         </main>

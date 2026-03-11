@@ -4,6 +4,9 @@ import { getSingleClassById } from "@/lib/dal/classes";
 import { getRatingByClassId } from "@/lib/dal/classRating";
 import { getTrainerById } from "@/lib/dal/trainers";
 import ClassRating from "@/components/class/classRating";
+import SignUpBtn from "@/components/buttons/SignUpBtn";
+import { getSingleUser } from "@/lib/dal/user";
+import { cookies } from "next/headers";
 
 export default async function Page({ params }) {
     const { id } = await params;
@@ -19,6 +22,20 @@ export default async function Page({ params }) {
     const count = ratings.length;
     const total = ratings.reduce((sum, r) => sum + Number(r.rating || 0), 0);
     const average = count ? total / count : 0;
+
+    // Determine if user is enrolled in this class
+    let isEnrolled = false;
+    try {
+        const cookieStore = await cookies();
+        const userId = cookieStore.get("userId")?.value;
+        const token = cookieStore.get("token")?.value;
+        if (userId && token) {
+            const user = await getSingleUser(userId, token);
+            isEnrolled = user.classes.some((c) => String(c.id) === String(classItem.id));
+        }
+    } catch (e) {
+        // Not logged in or error, isEnrolled stays false
+    }
 
     return (
         <main className=" flex flex-col gap-4">
@@ -40,7 +57,7 @@ export default async function Page({ params }) {
                 </div>
             </div>
 
-            <section className="wrapper flex flex-col gap-4">
+            <section className="wrapper flex flex-col gap-4 mb-6">
                 <p>{classItem.classDay} - {classItem.classTime}</p>
                 <p>{classItem.classDescription}</p>
                 <h3 className="mt-4">Trainer</h3>
@@ -59,6 +76,7 @@ export default async function Page({ params }) {
                     </div>
                 )}
             </section>
+            <SignUpBtn classId={classItem.id} isEnrolled={isEnrolled} />
         </main>
     );
 }
