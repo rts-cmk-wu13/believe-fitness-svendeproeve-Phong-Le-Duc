@@ -27,6 +27,18 @@ export default function BurgerNav() {
 
             {isOpen && (
                 <div className={styles.overlay}>
+                    <button
+                        className={styles.closeButton}
+                        onClick={() => setIsOpen(false)}
+                        aria-label="Close menu"
+                    >
+                        <Image
+                            src='/assets/burger_close_nav.png'
+                            alt='close menu'
+                            width={22}
+                            height={22}
+                        />
+                    </button>
                     <nav className={styles.nav}>
                         <a href="/" className={styles.navLink}>Home</a>
                         <a href="/popular-classes" className={styles.navLink}>Popular Classes</a>

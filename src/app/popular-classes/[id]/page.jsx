@@ -46,14 +46,15 @@ export default async function Page({ params }) {
                 <h3 className="mt-4">Trainer</h3>
                 {trainer && (
                     <div className="flex items-center gap-3">
-                        <Image
-                            src={trainer.asset.url}
-                            alt={trainer.trainerName}
-                            width={50}
-                            height={50}
-                            unoptimized
-                            className="rounded-md w-18 h-18 object-cover"
-                        />
+                        <div className="relative w-22 h-22 overflow-hidden rounded-md shrink-0">
+                            <Image
+                                src={trainer.asset.url}
+                                alt={trainer.trainerName}
+                                fill
+                                unoptimized
+                                className="object-cover h-auto w-auto"
+                            />
+                        </div>
                         <p className="font-bold">{trainer.trainerName}</p>
                     </div>
                 )}

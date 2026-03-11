@@ -1,13 +1,20 @@
-/* .burgerButton {
-    position: fixed;
-    top: 1.25rem;
-    right: 1.75rem;
-    z-index: 1100;
+.burgerButton {
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
-} */
+}
+
+.closeButton {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+}
 
 .overlay {
     position: fixed;

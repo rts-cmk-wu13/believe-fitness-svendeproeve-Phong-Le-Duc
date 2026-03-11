@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-// import { useContext } from "react";
+
 import LoginBtn from "../buttons/LoginBtn";
 import ClassesBtn from "../buttons/ClassesBtn";
 
-// import { AuthContext } from "@/context/AuthContext";
+
 
 export default function Hero() {
-    // const { authData } = useContext(AuthContext);
+
 
     return (
         <div className="relative w-full h-[40vh]">
@@ -22,7 +22,7 @@ export default function Hero() {
                     sizes="100vw"
                     className="object-cover"
                 />
-                {/* Dark overlay */}
+
             </div>
 
             <div className="absolute inset-x-0 bottom-12 left-8 z-10 flex flex-col gap-2">
@@ -30,7 +30,7 @@ export default function Hero() {
                 <div className="flex gap-2 mt-4">
                     <ClassesBtn />
                     <LoginBtn />
-                </div>
+                </div>AC
             </div>
         </div>
     );

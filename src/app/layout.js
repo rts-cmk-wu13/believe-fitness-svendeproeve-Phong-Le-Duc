@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
-// import BurgerNav from "@/components/navigation/BurgerNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,13 +26,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
-      >
-        {/* <BurgerNav /> */}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}>
         <Header />
         {children}
       </body>
     </html>
   );
-} 
+}

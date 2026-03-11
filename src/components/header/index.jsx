@@ -2,6 +2,7 @@
 import { useRouter, usePathname } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa6";
 import BurgerMenu from "@/components/navigation/BurgerNav";
+import LoginBtn from "@/components/buttons/LoginBtn";
 
 const TITLES = {
     "/": "Home",
@@ -9,10 +10,9 @@ const TITLES = {
     "/popular-classes/[id]": "Class Details",
     "/search": "Search",
     "/profile": "My Profile",
-
 };
 
-export default function Header() {
+export default function Header({ isLoggedIn }) {
     const router = useRouter();
     const pathname = usePathname();
     const title = TITLES[pathname] || "Believe Fitness";
@@ -24,8 +24,7 @@ export default function Header() {
         : "relative";
 
     return (
-        <header className={`flex gap-4 items-center justify-between bg-transparent w-full p-4 my-2  ${headerRouteLocation}`}>
-
+        <header className={`flex gap-4 items-center justify-between bg-transparent w-full p-4 my-2 ${headerRouteLocation}`}>
             <div className="flex justify-around">
                 <button
                     onClick={() => router.back()}
@@ -33,10 +32,12 @@ export default function Header() {
                 >
                     <FaArrowLeft />
                 </button>
-
                 <span className="text-center ml-4">{title}</span>
             </div>
-            <BurgerMenu />
+            <div className="flex gap-4">
+                <BurgerMenu />
+                {/* <LoginBtn isLoggedIn={isLoggedIn} /> */}
+            </div>
         </header>
     );
 }
