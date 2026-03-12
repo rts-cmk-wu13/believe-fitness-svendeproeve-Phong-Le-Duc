@@ -1,8 +1,14 @@
+import SearchContainer from "@/components/search/SearchContainer";
+
+
+
+
 export default function page() {
 
     return (
         <>
-            <h1>SEARCH PAGE HERE!</h1>
+            <SearchContainer />
+
         </>
     )
 }

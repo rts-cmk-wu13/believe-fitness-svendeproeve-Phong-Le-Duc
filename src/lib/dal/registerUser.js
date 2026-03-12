@@ -4,6 +4,7 @@ export async function registerUser(data) {
     try {
         const body = new URLSearchParams();
         body.set("username", data.username);
+        body.set("userFirstName", data.username);
         body.set("email", data.email);
         body.set("password", data.password);
         body.set("confirmPassword", data.confirmPassword);

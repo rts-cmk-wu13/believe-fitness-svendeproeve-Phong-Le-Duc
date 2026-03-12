@@ -76,7 +76,12 @@ export default async function Page({ params }) {
                     </div>
                 )}
             </section>
-            <SignUpBtn classId={classItem.id} isEnrolled={isEnrolled} />
+            <SignUpBtn
+                classId={classItem.id}
+                isEnrolled={isEnrolled}
+                joinedCount={classItem.users?.length || 0}
+                maxParticipants={classItem.maxParticipants}
+            />
         </main>
     );
 }

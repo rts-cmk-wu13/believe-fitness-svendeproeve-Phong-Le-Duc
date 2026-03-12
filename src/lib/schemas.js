@@ -24,7 +24,7 @@ export const contactSchema = z.object({
 
 
 export const registerSchema = z.object({
-    firstname: z.string().min(2, "Fornavn skal være mindst 2 tegn langt"),
+    username: z.string().min(2, "Fornavn skal være mindst 2 tegn langt"),
     email: z.string().email("Ugyldig email adresse"),
     password: z.string().min(4, "Adgangskode skal være mindst 4 tegn langt"),
     confirmPassword: z.string(),
