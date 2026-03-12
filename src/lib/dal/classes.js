@@ -44,3 +44,8 @@ export async function getSingleClassById(id) {
 }
 
 
+export async function createClass(prevState, formData) {
+    console.log("Creating class with formData:", formData);
+
+
+}
