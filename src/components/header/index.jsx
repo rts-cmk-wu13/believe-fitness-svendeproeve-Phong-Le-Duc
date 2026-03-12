@@ -24,7 +24,7 @@ export default function Header({ isLoggedIn }) {
         : "relative";
 
     return (
-        <header className={`flex gap-4 items-center justify-between bg-transparent w-full p-4 my-2 ${headerRouteLocation}`}>
+        <header className={`px-8 flex gap-4 items-center justify-between bg-transparent w-full p-4 my-2 ${headerRouteLocation}`}>
             <div className="flex justify-around">
                 <button
                     onClick={() => router.back()}

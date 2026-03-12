@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getAllClasses } from "@/lib/dal/classes";
 import { getSingleClassById } from "@/lib/dal/classes";
 import ParticipantsBtn from "@/components/buttons/participantsBtn";
+import CreateClassBtn from "@/components/buttons/CreateClassBtn";
 
 export default async function Page() {
     const cookieStore = await cookies();
@@ -31,7 +32,7 @@ export default async function Page() {
     );
 
     return user.role === "admin" ? (
-        <main className="p-4 flex flex-col gap-4">
+        <main className="wrapper flex flex-col gap-4">
             <div className="flex">
                 <figure className="p-4 rounded-full" style={{ backgroundColor: "var(--background-secondary)" }}>
                     <Image src={user.profilePicture || '/assets/profile_icon.png'}
@@ -42,7 +43,7 @@ export default async function Page() {
                 </figure>
                 <div className="ml-4 flex flex-col justify-center">
                     <p className="text-lg">{user.userFirstName} {user.userLastName}</p>
-                    <p className="text-sm">{user.role}</p>
+                    <p className="text-sm">{user.role === "default" ? "member" : user.role === "admin" ? "instructor" : user.role}</p>
                 </div>
             </div>
 
@@ -52,21 +53,25 @@ export default async function Page() {
                 <ul className="flex flex-col gap-2 ">
                     {allClassesWithUsers.map((classItem) => (
                         <li key={classItem.id} className="mb-4 p-4 border border-solid rounded-3xl">
-                            <p className="text-2xl font-semibold">{classItem.className}</p>
+                            <p className="text-lg font-semibold">{classItem.className}</p>
                             <p className="mt-4">{classItem.classDay} at {classItem.classTime}</p>
-                            <p className="mt-2 text-sm">
-                                Max participants: <span className="font-bold">{classItem.maxParticipants}</span>
-                            </p>
-                            <p className="mt-2 text-sm">
-                                Joined: <span className="font-bold">{classItem.users.length}</span>
-                            </p>
+                            <div className="flex justify-between">
+                                <p className="mt-2 text-sm">
+                                    Max participants: <span className="font-bold">{classItem.maxParticipants}</span>
+                                </p>
+                                <p className="mt-2 text-sm">
+                                    Joined: <span className="font-bold">{classItem.users.length}</span>
+                                </p>
+                            </div>
                             <div className="flex justify-between mt-4">
                                 <ParticipantsBtn classId={classItem.id} users={classItem.users} />
                             </div>
+
                         </li>
                     ))}
                 </ul>
             )}
+            <CreateClassBtn />
         </main>
     ) : (
         <main className="p-4 flex flex-col gap-4">
@@ -80,7 +85,7 @@ export default async function Page() {
                 </figure>
                 <div className="ml-4 flex flex-col justify-center">
                     <p className="text-lg">{user.userFirstName} {user.userLastName}</p>
-                    <p className="text-sm">{user.role}</p>
+                    <p className="text-sm">{user.role === "default" ? "member" : user.role === "admin" ? "instructor" : user.role}</p>
                 </div>
             </div>
 

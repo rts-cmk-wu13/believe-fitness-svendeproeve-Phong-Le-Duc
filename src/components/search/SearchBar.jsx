@@ -12,7 +12,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
     return (
         <form
             className="relative wrapper mx-auto  rounded flex items-center "
-            style={{ minHeight: "73px" }}
+            style={{ minHeight: "50px" }}
             onSubmit={async e => {
                 e.preventDefault();
                 setSearchTerm(inputValue);
@@ -36,9 +36,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
 
                 if (exactMatch && filtered.length === 1) {
                     router.push(`/popular-classes/${exactMatch.id}`);
-                } else if (filtered.length === 0) {
-                    alert("No classes found matching your search. Please try again.");
-                } // else: just update searchTerm, SearchResults will show the list
+                }
             }}
         >
             <div className="relative w-full flex items-center">

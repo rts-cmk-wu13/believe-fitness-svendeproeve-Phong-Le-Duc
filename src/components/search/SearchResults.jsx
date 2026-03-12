@@ -7,7 +7,7 @@ function SearchResults({ searchTerm }) {
 
     useEffect(() => {
         async function fetchAll() {
-            const response = await searchClasses(""); // fetch all classes
+            const response = await searchClasses("");
             setAllClasses(response.data || []);
         }
         fetchAll();
@@ -24,13 +24,13 @@ function SearchResults({ searchTerm }) {
     if (!searchTerm) return null;
 
     return (
-        <div className="mt-4">
+        <div className="">
             {filtered.length === 0 ? (
-                <div className="text-gray-500">No classes found.</div>
+                <div className="text-red-500 text-center">No classes found.</div>
             ) : (
-                <ul className="space-y-2">
+                <ul className="space-y-2 wrapper">
                     {filtered.map(classItem => (
-                        <li key={classItem.id} className="border p-3 rounded hover:bg-gray-50">
+                        <li key={classItem.id} className=" p-3 rounded hover:bg-gray-50">
                             <Link href={`/popular-classes/${classItem.id}`} className="font-semibold text-blue-600 hover:underline">
                                 {classItem.className}
                             </Link>

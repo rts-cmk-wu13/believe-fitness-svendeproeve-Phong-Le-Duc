@@ -16,7 +16,7 @@ export default function ClassRandom({ classes = [] }) {
                     width={800}
                     height={600}
                     unoptimized
-                    className="w-full h-80 object-cover rounded-4xl"
+                    className="w-full h-70 object-cover rounded-4xl"
                 />
                 <div
                     className="absolute bottom-0 left-0 p-4 rounded-4xl rounded-br-none rounded-tl-none z-10"
