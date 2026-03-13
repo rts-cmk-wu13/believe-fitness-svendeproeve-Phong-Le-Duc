@@ -10,7 +10,7 @@ export default function ClassList({ classesWithRatings }) {
                     <div key={classItem.id} className="relative min-w-fit">
                         <ClassCard
                             classId={classItem.id}
-                            imageUrl={classItem.asset.url}
+                            imageUrl={classItem.asset ? classItem.asset.url : "/assets/placeholder.png"} // fallback image
                             altText={classItem.className}
                         />
                         <div className="absolute w-full bottom-0 left-0 p-4 rounded-4xl rounded-br-none rounded-tl-none z-10"
