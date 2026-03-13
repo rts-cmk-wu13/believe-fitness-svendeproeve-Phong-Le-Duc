@@ -1,10 +1,46 @@
+
+
 # Believe Fitness – Dokumentation  
 Phong Le Duc
+
+## Bemærk: ændring i backend... 
+[user.controller.js]
+```js
+async function createSingleUser(req, res, next) {
+    try {
+        let user = await User.create({
+            username: req.fields.username,
+            // Tilføjet for at acceptere userFirstName, så det kan sættes til samme værdi som username i registeruser.js,
+            // så navnet kan vises på profilsiden
+            userFirstName: req.fields.userFirstName,
+            password: hashSync(req.fields.password, 15),
+            role: "default"
+        });
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).end();
+    }
+}
+```
+Feltet role bruges til at bestemme brugertypen. Før blev der brugt navne som "default" og "admin", men nu kan man nemt bruge mere sigende navne som "member" og "trainer".
+
+[src/app/profile/page.jsx.]
+```js
+<p className="text-sm">
+  {user.role === "default" ? "member" : user.role === "admin" ? "instructor" : user.role}
+</p>
+```
+
 
 ## Tech stack
 - **Next.js** – Et moderne React-baseret framework med filbaseret routing, server-side rendering og stærk community support. Valgt for dets fleksibilitet og udbredelse på arbejdsmarkedet.
 - **Tailwind CSS** – Utility-first CSS framework, der gør det hurtigt og nemt at style komponenter direkte i markup.
 - **Zod** – Valideringsbibliotek til at sikre korrekt datahåndtering i forms og API-kald.
+
+
+
+
 
 
 
@@ -107,6 +143,7 @@ Eksempler på andre værktøjer og frameworks, man kunne bruge til lignende proj
 - Angular (frontend)
 - Firebase (backend/hosting)
 - Supabase (backend/hosting)
+
 
 ---
 

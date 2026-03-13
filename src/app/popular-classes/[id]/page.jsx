@@ -27,7 +27,7 @@ export default async function Page({ params }) {
 
     let isEnrolled = false;
     let isLoggedIn = false;
-    let token, userId;
+    let token, userId, userRole;
     try {
         const cookieStore = await cookies();
         userId = cookieStore.get("userId")?.value;
@@ -35,6 +35,7 @@ export default async function Page({ params }) {
         if (userId && token) {
             isLoggedIn = true;
             const user = await getSingleUser(userId, token);
+            userRole = user.role;
             isEnrolled = user.classes.some((c) => String(c.id) === String(classItem.id));
         }
     } catch (e) {
@@ -81,12 +82,18 @@ export default async function Page({ params }) {
                 )}
             </section>
             {isLoggedIn ? (
-                <SignUpBtn
-                    classId={classItem.id}
-                    isEnrolled={isEnrolled}
-                    joinedCount={classItem.users?.length || 0}
-                    maxParticipants={classItem.maxParticipants}
-                />
+                userRole !== "admin" ? (
+                    <div className="wrapper">
+                        <SignUpBtn
+                            classId={classItem.id}
+                            isEnrolled={isEnrolled}
+                            joinedCount={classItem.users?.length || 0}
+                            maxParticipants={classItem.maxParticipants}
+                        />
+                    </div>
+                ) : (
+                    <p className="text-center text-sm text-gray-500">Admins cannot sign up for classes.</p>
+                )
             ) : (
                 <Link
                     href="/login"

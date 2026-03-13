@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
-import FormCreateClass from "@/components/formCreateClass/FormCreateClass";
+import FormCreateClass from "@/components/formCreateClass/_FormCreateClass";
 import { getSingleUser } from "@/lib/dal/user";
 
 export default async function Page() {

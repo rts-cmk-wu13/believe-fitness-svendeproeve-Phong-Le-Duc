@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getAllClasses } from "@/lib/dal/classes";
 import { getSingleClassById } from "@/lib/dal/classes";
 import ParticipantsBtn from "@/components/buttons/participantsBtn";
-import CreateClassBtn from "@/components/buttons/CreateClassBtn";
+// import CreateClassBtn from "@/components/buttons/CreateClassBtn";
 import SignUpBtn from "@/components/buttons/SignUpBtn";
 
 export default async function Page() {
@@ -72,7 +72,7 @@ export default async function Page() {
                     ))}
                 </ul>
             )}
-            <CreateClassBtn />
+            {/* <CreateClassBtn /> */}
         </main>
     ) : (
         <main className="p-4 flex flex-col gap-4">

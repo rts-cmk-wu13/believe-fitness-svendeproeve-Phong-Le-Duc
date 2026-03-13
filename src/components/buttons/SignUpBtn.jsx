@@ -46,7 +46,7 @@ export default function SignUpBtn({ classId, isEnrolled, joinedCount, maxPartici
                     <p className="text-red-600 mt-2 text-center">All spots for this class are now occupied.</p>
                     {enrolled && (
                         <button
-                            className="py-2 px-4 text-black rounded-full w-full mt-2"
+                            className=" py-2 px-4 text-black rounded-full w-full mt-2"
                             style={{ backgroundColor: "var(--background-secondary)" }}
                             onClick={handleLeave}
                             disabled={isPending}
