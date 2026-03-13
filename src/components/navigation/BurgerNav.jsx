@@ -13,8 +13,13 @@ export default function BurgerNav() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [hasMounted, setHasMounted] = useState(false);
 
-    useEffect(() => {
+    // Funktion til at tjekke login-status
+    const checkLoginStatus = () => {
         setIsLoggedIn(document.cookie.includes("token="));
+    };
+
+    useEffect(() => {
+        checkLoginStatus();
         setHasMounted(true);
     }, []);
 
@@ -26,7 +31,10 @@ export default function BurgerNav() {
         <>
             <button
                 className={styles.burgerButton}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => {
+                    if (!isOpen) checkLoginStatus();
+                    setIsOpen(!isOpen);
+                }}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
                 <Image
