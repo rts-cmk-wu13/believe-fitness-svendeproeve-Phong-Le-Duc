@@ -6,6 +6,7 @@ export default function ClassRandom({ classes = [] }) {
     if (!classes.length) return null;
 
     const randomClass = classes[Math.floor(Math.random() * classes.length)];
+    if (!randomClass || !randomClass.asset || !randomClass.asset.url) return null;
 
     return (
         <figure className="wrapper relative">

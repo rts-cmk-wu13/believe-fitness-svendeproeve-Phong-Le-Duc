@@ -6,6 +6,7 @@ import { getAllClasses } from "@/lib/dal/classes";
 import { getSingleClassById } from "@/lib/dal/classes";
 import ParticipantsBtn from "@/components/buttons/participantsBtn";
 import CreateClassBtn from "@/components/buttons/CreateClassBtn";
+import SignUpBtn from "@/components/buttons/SignUpBtn";
 
 export default async function Page() {
     const cookieStore = await cookies();
@@ -105,12 +106,16 @@ export default async function Page() {
                                 >
                                     Show Class
                                 </Link>
-                                <button
+                                <SignUpBtn
                                     className="py-2 px-4 text-black rounded-full"
                                     style={{ backgroundColor: "var(--background-secondary)" }}
+                                    classId={classItem.id}
+                                    isEnrolled={true}
+                                    joinedCount={classItem.users?.length || 0}
+                                    maxParticipants={classItem.maxParticipants}
                                 >
                                     Leave
-                                </button>
+                                </SignUpBtn>
                             </div>
                         </li>
                     ))}

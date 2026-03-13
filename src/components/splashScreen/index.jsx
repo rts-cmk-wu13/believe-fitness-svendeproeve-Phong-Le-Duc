@@ -53,11 +53,11 @@ export default function SplashScreen({ onFinish }) {
             />
 
             {/* Headings always visible, left-aligned */}
-            <div className="absolute left-0 top-1/2  z-20 flex flex-col   ">
+            <div className="absolute left-0 top-1/2  z-20 flex flex-col believe-animation   ">
                 <h1 className="wrapper text-left" style={{ color: "var(--color-secondary)" }}>
                     Believe <br /> Fitness
                 </h1>
-                <div className="flex items-center gap-2 mt-4 mb-16 w-full">
+                <div className="flex items-center gap-2 mt-4 mb-16 w-full trainLikeAPro-animation">
                     <hr className="border-white w-[10%] border" />
                     <h3 className="text-white">Train like a pro</h3>
                 </div>
