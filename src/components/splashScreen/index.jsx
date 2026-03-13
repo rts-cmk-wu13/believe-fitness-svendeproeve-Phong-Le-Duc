@@ -38,7 +38,7 @@ export default function SplashScreen({ onFinish }) {
     if (!visible) return null;
 
     return (
-        <div className="fixed inset-0 w-screen h-screen bg-black flex flex-col items-center justify-center z-[9999] overflow-hidden">
+        <div className="fixed inset-0 w-screen h-screen bg-black flex flex-col items-center justify-center z-9999 overflow-hidden">
 
             <Image
                 src={SPLASH_IMAGES[imgIdx]}
@@ -48,7 +48,7 @@ export default function SplashScreen({ onFinish }) {
                 priority
             />
 
-            {/* Headings always visible, left-aligned */}
+
             <div className="absolute left-0 top-1/2  z-20 flex flex-col believe-animation   ">
                 <h1 className="wrapper text-left" style={{ color: "var(--color-secondary)" }}>
                     Believe <br /> Fitness
