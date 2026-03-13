@@ -26,6 +26,7 @@ export default function SignUpBtn({ classId, isEnrolled, joinedCount, maxPartici
     };
 
     const handleLeave = async () => {
+        if (!window.confirm("Leave class?")) return;
         setError(null);
         startTransition(async () => {
             try {
