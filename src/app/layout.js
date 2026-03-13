@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
-import SplashLayout from "./SplashLayout"; // <-- add this import
+import SplashLayout from "./SplashLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

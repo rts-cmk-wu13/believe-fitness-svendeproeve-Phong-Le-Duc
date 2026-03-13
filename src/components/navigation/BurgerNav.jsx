@@ -67,7 +67,7 @@ export default function BurgerNav() {
                                     document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                     document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                                     setIsOpen(false);
-                                    window.location.replace("/"); // Hard reload to update UI
+                                    window.location.replace("/");
                                 }}
                             >
                                 Log out

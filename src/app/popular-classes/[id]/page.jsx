@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSingleClassById } from "@/lib/dal/classes";
 import { getRatingByClassId } from "@/lib/dal/classRating";
@@ -23,18 +24,21 @@ export default async function Page({ params }) {
     const total = ratings.reduce((sum, r) => sum + Number(r.rating || 0), 0);
     const average = count ? total / count : 0;
 
-    // Determine if user is enrolled in this class
+
     let isEnrolled = false;
+    let isLoggedIn = false;
+    let token, userId;
     try {
         const cookieStore = await cookies();
-        const userId = cookieStore.get("userId")?.value;
-        const token = cookieStore.get("token")?.value;
+        userId = cookieStore.get("userId")?.value;
+        token = cookieStore.get("token")?.value;
         if (userId && token) {
+            isLoggedIn = true;
             const user = await getSingleUser(userId, token);
             isEnrolled = user.classes.some((c) => String(c.id) === String(classItem.id));
         }
     } catch (e) {
-        // Not logged in or error, isEnrolled stays false
+        console.error("Error checking enrollment status:", e);
     }
 
     return (
@@ -76,12 +80,22 @@ export default async function Page({ params }) {
                     </div>
                 )}
             </section>
-            <SignUpBtn
-                classId={classItem.id}
-                isEnrolled={isEnrolled}
-                joinedCount={classItem.users?.length || 0}
-                maxParticipants={classItem.maxParticipants}
-            />
+            {isLoggedIn ? (
+                <SignUpBtn
+                    classId={classItem.id}
+                    isEnrolled={isEnrolled}
+                    joinedCount={classItem.users?.length || 0}
+                    maxParticipants={classItem.maxParticipants}
+                />
+            ) : (
+                <Link
+                    href="/login"
+                    className="py-2 px-4 text-black rounded-full mx-auto text-center"
+                    style={{ backgroundColor: "var(--background-secondary)", display: "inline-block", maxWidth: 200 }}
+                >
+                    Log in to sign up
+                </Link>
+            )}
         </main>
     );
 }

@@ -26,7 +26,7 @@ export async function getSingleUser() {
     if (contentType.includes("application/json")) {
         const data = await res.json();
         console.log("❤️getSingleUser data:", data);
-        // Log the shape of each class
+
         if (Array.isArray(data.classes)) {
             data.classes.forEach((classObj, idx) => {
                 console.log(`Class #${idx}:`, classObj);

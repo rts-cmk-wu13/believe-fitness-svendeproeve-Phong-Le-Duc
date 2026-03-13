@@ -23,6 +23,9 @@ export default function Header({ isLoggedIn }) {
         ? "fixed top-0 left-0 right-0 z-50"
         : "relative";
 
+
+    const isWhiteArrow = pathname === "/" || pathname.startsWith("/popular-classes/") && pathname.split("/").length === 3;
+
     return (
         <header className={`px-8 flex gap-4 items-center justify-between bg-transparent w-full p-4 my-2 ${headerRouteLocation}`}>
             <div className="flex justify-around">
@@ -30,9 +33,11 @@ export default function Header({ isLoggedIn }) {
                     onClick={() => router.back()}
                     className="bg-none border-none cursor-pointer p-0"
                 >
-                    <FaArrowLeft />
+                    <FaArrowLeft color={isWhiteArrow ? "#fff" : undefined} />
                 </button>
-                <span className="text-center ml-4">{title}</span>
+                {!(isHome || isDetailPage) && (
+                    <span className="text-center ml-4">{title}</span>
+                )}
             </div>
             <div className="flex gap-4">
                 <BurgerMenu />

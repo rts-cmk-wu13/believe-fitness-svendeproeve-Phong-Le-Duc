@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa";
 
 export default function ClassRating({ average = 0, count = 0, className = "" }) {
     if (count === 0) {
-        return <p className={`text-sm ${className}`}>Not rated yet</p>;
+        return <p className={`font-bold text-sm ${className}`}>Not rated yet</p>;
     }
 
     const starCount = Math.round(average);

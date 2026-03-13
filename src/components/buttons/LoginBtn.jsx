@@ -14,7 +14,6 @@ export default function LoginBtn() {
     }, []);
 
     const handleLogout = () => {
-        if (!window.confirm("Log out?")) return;
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -32,7 +31,7 @@ export default function LoginBtn() {
             {isLoggedIn ? (
                 <button
                     onClick={handleLogout}
-                    className="py-2 px-4 text-black rounded-full"
+                    className="py-2 px-4 text-black rounded-full flex items-center justify-center"
                     style={{ backgroundColor: "var(--background-secondary)" }}
                 >
                     Log out
@@ -40,7 +39,7 @@ export default function LoginBtn() {
             ) : (
                 <Link href="/login">
                     <button
-                        className="py-2 px-4 text-black rounded-full"
+                        className="py-2 px-4 text-black rounded-full flex items-center justify-center"
                         style={{ backgroundColor: "var(--background-secondary)" }}
                     >
                         Log in

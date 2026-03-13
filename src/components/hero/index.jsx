@@ -8,7 +8,7 @@ import ClassesBtn from "../buttons/ClassesBtn";
 
 
 export default function Hero() {
-    // Check for token in cookies (client-side)
+
     const isLoggedIn = typeof document !== "undefined" && document.cookie.includes("token=");
 
     return (

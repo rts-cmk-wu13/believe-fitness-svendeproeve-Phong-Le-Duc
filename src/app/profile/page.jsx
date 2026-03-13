@@ -19,12 +19,12 @@ export default async function Page() {
 
     const user = await getSingleUser(userId, token);
 
-    // Fetch all classes for admin
+
     const allClasses = user.role === "admin" ? await getAllClasses() : [];
 
     console.log("allClasses", allClasses);
 
-    // Fetch details for each class to get users array
+
     const allClassesWithUsers = await Promise.all(
         allClasses.map(async (classItem) => {
             const classDetails = await getSingleClassById(classItem.id);

@@ -9,11 +9,7 @@ const SPLASH_IMAGES = [
     "/assets/splash_2.png"
 ];
 
-/**
- * SplashScreen component
- * Shows a splash image and a button, only once per user (using localStorage)
- * @param {function} onFinish 
- */
+
 export default function SplashScreen({ onFinish }) {
     const [visible, setVisible] = useState(false);
     const [buttonVisible, setButtonVisible] = useState(false);

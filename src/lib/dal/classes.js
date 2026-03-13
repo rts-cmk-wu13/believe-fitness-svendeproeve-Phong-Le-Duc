@@ -55,7 +55,7 @@ export async function createClass(prevState, formData) {
     console.log(Object.fromEntries(formData));
 
 
-    // 1. Upload asset
+
     const assetResponse = await fetch("http://localhost:4000/api/v1/assets", {
         method: "POST",
         headers: {
@@ -70,7 +70,7 @@ export async function createClass(prevState, formData) {
         throw new Error("Failed to create asset");
     }
 
-    // 2. Prepare new FormData for class (exclude file)
+
     const classFormData = new FormData();
     for (const [key, value] of formData.entries()) {
         if (key !== "file") {
@@ -79,7 +79,7 @@ export async function createClass(prevState, formData) {
     }
     classFormData.append("assetId", assetData.id);
 
-    // 3. Create class
+
     const res = await fetch("http://localhost:4000/api/v1/classes", {
         method: "POST",
         headers: {

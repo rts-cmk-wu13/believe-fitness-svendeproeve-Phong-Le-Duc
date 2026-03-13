@@ -1,6 +1,5 @@
 "use client";
-
-import { z } from "zod/v4"; // Importer zod for at kunne bruge z.treeifyError
+import { z } from "zod/v4";
 import { registerSchema } from "@/lib/schemas";
 import { useState } from "react";
 import { registerUser } from "@/lib/dal/registerUser";
@@ -15,7 +14,7 @@ export default function FormRegisterUser() {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
-        console.log('Form data:', data); // Add this line
+        console.log('Form data:', data);
         const result = registerSchema.safeParse(data);
 
         if (!result.success) {
@@ -74,30 +73,6 @@ export default function FormRegisterUser() {
                         />
                         <p className="text-red-600 text-sm min-h-[1.5em]">{errors && errors?.email?.errors[0]}</p>
                     </div>
-
-                    {/* <div className="flex flex-col w-full">
-                    <label htmlFor="username" className="mb-1 text-sm sr-only">Brugernavn</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder="Brugernavn"
-                        className="bg-white border border-gray-300 text-black rounded-full px-3 py-2 focus:outline-none focus:border-blue-400"
-                    />
-                    <p className="text-red-600 text-sm min-h-[1.5em]">{errors && errors?.username?.errors[0]}</p>
-                </div> */}
-                    {/* 
-                <div className="flex flex-col w-full">
-                    <label htmlFor="age" className="mb-1 text-sm sr-only">Alder</label>
-                    <input
-                        type="number"
-                        id="age"
-                        name="age"
-                        placeholder="Alder"
-                        className="bg-white border border-gray-300 text-black rounded-sm px-3 py-2 focus:outline-none focus:border-blue-400"
-                    />
-                    <p className="text-red-600 text-sm min-h-[1.5em]">{errors && errors?.age?.errors[0]}</p>
-                </div> */}
 
                     <div className="flex flex-col w-full">
                         <label htmlFor="password" className="mb-1 text-sm sr-only">Adgangskode</label>

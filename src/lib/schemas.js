@@ -1,4 +1,3 @@
-//husk lib mappen skal være under src mappen!
 import { z } from "zod";
 
 

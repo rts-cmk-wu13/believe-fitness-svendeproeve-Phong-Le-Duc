@@ -17,11 +17,11 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
                 e.preventDefault();
                 setSearchTerm(inputValue);
 
-                const response = await searchClasses(""); // fetch all classes
+                const response = await searchClasses("");
                 const classes = response.data || [];
                 const query = inputValue.toLowerCase();
 
-                // Filter for all matches
+
                 const filtered = classes.filter(classItem =>
                     classItem.className.toLowerCase().includes(query) ||
                     classItem.classDescription.toLowerCase().includes(query) ||
@@ -29,7 +29,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
                     (classItem.trainer && classItem.trainer.trainerName.toLowerCase().includes(query))
                 );
 
-                // Check for exact match on className
+
                 const exactMatch = filtered.find(classItem =>
                     classItem.className.toLowerCase() === query
                 );
@@ -54,12 +54,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
                     style={{ color: '#9ca3af' }}
                 />
             </div>
-            {/* <button
-                type="submit"
-                className="p-2 bg-blue-500 text-white rounded-md flex items-center justify-center"
-            >
-                Search
-            </button> */}
+
         </form>
     );
 }
