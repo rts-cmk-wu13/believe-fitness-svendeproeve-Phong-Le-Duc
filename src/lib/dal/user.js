@@ -1,15 +1,14 @@
 "use server";
+import { cookies } from "next/headers";
 
+export async function getSingleUser() {
+    const cookieStore = await cookies();
 
-export async function getSingleUser(userId, token) {
-    // Fallback to cookies if parameters are not provided
-    if (!userId || !token) {
-        const cookieStore = await cookies();
-        if (!userId) userId = cookieStore.get("userId")?.value;
-        if (!token) token = cookieStore.get("token")?.value;
-    }
-    if (!userId) throw new Error("Missing userId");
-    if (!token) throw new Error("Missing token");
+    if (!cookieStore.has("userId")) return null;
+
+    const userId = cookieStore.get("userId").value;
+    const token = cookieStore.get("token").value;
+
 
     const res = await fetch(`http://localhost:4000/api/v1/users/${userId}`, {
         headers: {

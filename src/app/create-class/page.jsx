@@ -8,7 +8,7 @@ export default async function Page() {
     const cookieStore = await cookies();
     const role = cookieStore.get("role")?.value;
     const userId = cookieStore.get("userId")?.value;
-    const user = getSingleUser()
+    const user = await getSingleUser()
 
     return (role !== "admin") ? (
         <main className="p-4">

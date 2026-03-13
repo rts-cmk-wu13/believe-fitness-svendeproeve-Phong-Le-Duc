@@ -9,7 +9,7 @@ export default function ClassCard({ classId, imageUrl, altText }) {
                 aria-label={altText}
             >
                 <Image
-                    src={imageUrl}
+                    src={imageUrl ? imageUrl : "/assets/welcome.jpg"}
                     alt={altText}
                     unoptimized
                     width={500}
