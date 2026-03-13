@@ -65,7 +65,7 @@ export default function SplashScreen({ onFinish }) {
             {buttonVisible && (
                 <button
                     onClick={handleStart}
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 px-4 py-4 text-sm font-bold rounded-full border-none cursor-pointer shadow-lg w-[50vw] "
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 px-4 py-4 text-sm font-bold rounded-full border-none cursor-pointer shadow-lg w-[50vw] animate-splashBtn "
                     style={{
                         backgroundColor: "var(--background-secondary)"
 
